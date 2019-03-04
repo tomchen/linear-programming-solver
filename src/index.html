@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Solveur de programme linéaire (méthode graphique)</title>
+	<link rel="stylesheet" href="style.css?ver=1" type="text/css" media="all" />
+</head>
+	<body>
+		<div id="wrapper">
+			<h1>Solveur de programme linéaire (méthode graphique)</h1>
+			<div id="input-container">
+				<div id="variable-number-block">
+					Nombre de variables : <span class="posint" id="vars-number">
+						<button decrement>-</button>
+						<input id="vars-number-input" type="number" step="1" min="1" max="9999" value="0">
+						<button increment>+</button>
+					</span>
+				</div>
+				<div id="constraint-number-block">
+					Nombre de contraintes : <span class="posint" id="constraint-number">
+						<button decrement>-</button>
+						<input id="constraint-number-input" type="number" step="1" min="1" max="9999" value="0">
+						<button increment>+</button>
+					</span>
+				</div>
+				<div class="equation extremization">
+					<select class="sign selectable-sign">
+						<option value="max">Max</option>
+						<option value="min">Min</option>
+					</select>
+					<span id="">Z</span>
+					<span class="sign">=</span>
+					<span class="polynomial">
+					</span>
+				</div>
+				<div id="constraint-list"></div>
+				<div class="equation constraint" id="constraint-example" data-cno="">
+					<span class="polynomial">
+					</span>
+					<select class="sign selectable-sign">
+						<option selected value="<=">≤</option>
+						<option value=">=">≥</option>
+						<option value="=">=</option>
+					</select>
+					<input class="result-input" value="" type="number" step="any" />
+				</div>
+				<div id="additional-contraint-block">
+					<span class="variable">x<sub>1, 2,...</sub></span> ≥ 0
+				</div>
+				<div id="buttonst-block">
+					<div id="generate-button-block">
+						<button id="generate-typical" title="Générer valeurs toujours positives, signes toujours &quot;≤&quot;, Z toujours à maximiser">Générer valeurs aléatoires typiques</button>
+						<button id="generate">Générer valeurs aléatoires</button>
+					</div>
+					<div id="solve-button-block">
+						<button id="solve">Résoudre avec méthode graphique<br>(seulement pour 2 variables)</button>
+					</div>
+				</div>
+				<div id="result"></div>
+			</div>
+
+			<div id="canvas-container">
+				<canvas id="layer1" width="500" height="500" class="canvas-coordgrid"></canvas>
+				<canvas id="layer2" width="500" height="500" class="canvas-main"></canvas>
+				<canvas id="layer3" width="500" height="500" class="canvas-coordtext"></canvas>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="script.js?ver=1"></script>
+	</body>
+</html>
