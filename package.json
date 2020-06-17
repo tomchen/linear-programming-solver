@@ -1,0 +1,65 @@
+{
+  "name": "linear-programming-solver",
+  "version": "1.1.0",
+  "description": "",
+  "scripts": {
+    "serve:test": "cross-env NODE_ENV=test gulp serve",
+    "serve:dist": "cross-env NODE_ENV=production gulp serve",
+    "start": "gulp serve",
+    "build": "cross-env NODE_ENV=production gulp",
+    "test": "npm run serve:test",
+    "tasks": "gulp --tasks",
+    "deploy": "gulp ghpagesdeploy",
+    "favicon:generate": "gulp generate-favicon",
+    "favicon:inject": "gulp inject-favicon-markups"
+  },
+  "keywords": [],
+  "author": "Tom Chen",
+  "license": "MIT",
+  "dependencies": {
+    "normalize.css": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "autoprefixer": "*",
+    "browser-sync": "*",
+    "chai": "*",
+    "cross-env": "*",
+    "cssnano": "*",
+    "del": "*",
+    "eslint": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-import": "*",
+    "gh-pages": "*",
+    "gulp": "*",
+    "gulp-babel": "*",
+    "gulp-cli": "*",
+    "gulp-eslint": "*",
+    "gulp-filter": "*",
+    "gulp-htmlmin": "*",
+    "gulp-if": "*",
+    "gulp-imagemin": "*",
+    "gulp-load-plugins": "*",
+    "gulp-plumber": "*",
+    "gulp-postcss": "*",
+    "gulp-real-favicon": "*",
+    "gulp-sass": "*",
+    "gulp-size": "*",
+    "gulp-uglify": "*",
+    "gulp-useref": "*",
+    "mkdirp": "*",
+    "mocha": "*",
+    "prettier": "*",
+    "yargs": "13.2.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
+  "engines": {
+    "node": ">=4"
+  }
+}
