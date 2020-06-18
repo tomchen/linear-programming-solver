@@ -10,6 +10,15 @@
     const defaultConstraintsNumber = 2
 
     /**
+     * i18n: localization
+     * @param  {Object} i18nObj un objet contenant des chaînes de caractères de localisation telles que: {en: 'hello', fr: 'bonjour'}
+     * @return {String}         chaîne de caractères localisée
+     */
+    const i18n = (i18nObj) => {
+      return i18nObj[document.documentElement.lang.split('-')[0]]
+    }
+
+    /**
      * updateVars: mettre à jour le nombre de variables dans le formulaire
      * @param  {Number} targetVarsNumber la valeur que le nombre de variables devra être
      * @return null
@@ -135,8 +144,10 @@
      */
     const solve = () => {
       if (currentVarsNumber !== 2) {
-        document.querySelector('#result').innerText =
-          'La mèthode graphique ne fonctionne que pour 2 variables !'
+        document.querySelector('#result').innerText = i18n({
+          en: 'The graphical method only works for 2 variables!',
+          fr: 'La mèthode graphique ne fonctionne que pour 2 variables !',
+        })
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         ctxCoordGrid.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         ctxCoordText.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
@@ -257,9 +268,15 @@
       // Dernière étape
       let resultString
       if (intersectionsPlusBordersArrayFit.length === 0) {
-        resultString = `Valeur ${
-          extremization.ext === 'max' ? 'maximale' : 'minimale'
-        } de Z n'existe pas.`
+        resultString =
+        i18n({
+          en: `${
+            extremization.ext === 'max' ? 'maximum' : 'minimum'
+          } value of Z does not exist.`,
+          fr: `Valeur ${
+            extremization.ext === 'max' ? 'maximale' : 'minimale'
+          } de Z n'existe pas.`,
+        })
         // no fit
       } else {
         // Calculer la valeur Z pour chacun des points d’intersection précédents
@@ -313,19 +330,34 @@
             return false
           })
         ) {
-          resultString = `Valeur ${
-            extremization.ext === 'max' ? 'maximale' : 'minimale'
-          } de Z est l'infini positif ou négatif.`
+          resultString = i18n({
+            en: `${
+              extremization.ext === 'max' ? 'maximum' : 'minimum'
+            } value of Z is the positive or negative infinity.`,
+            fr: `Valeur ${
+              extremization.ext === 'max' ? 'maximale' : 'minimale'
+            } de Z est l'infini positif ou négatif.`,
+          })
         } else {
-          resultString = `Valeur ${
-            extremization.ext === 'max' ? 'maximale' : 'minimale'
-          } de Z est de ${+extremeValue.toFixed(5)}, qui se produit sur `
+          resultString = i18n({
+            en: `${
+              extremization.ext === 'max' ? 'maximum' : 'minimum'
+            } value of Z is ${+extremeValue.toFixed(5)}, which occurs at `,
+            fr: `Valeur ${
+              extremization.ext === 'max' ? 'maximale' : 'minimale'
+            } de Z est de ${+extremeValue.toFixed(5)}, qui se produit sur `,
+          })
           if (extremePointArr.length === 1) {
-            resultString += 'le point '
+            resultString += i18n({
+              en: 'the point ',
+              fr: 'le point ',
+            })
           } else {
-            resultString += 'les points '
+            resultString += i18n({
+              en: 'the points ',
+              fr: 'les points ',
+            })
           }
-
           extremePointArr.forEach((extremePoint, index) => {
             ctx.fillStyle = 'red'
             drawCircle(extremePoint, 3, ctx, true)
@@ -334,7 +366,10 @@
             )}, ${+extremePoint.y.toFixed(5)})`
             if (extremePointArr.length !== 1) {
               if (index === extremePointArr.length - 2) {
-                resultString += ' et '
+                resultString += i18n({
+                  en: ' and ',
+                  fr: ' et ',
+                })
               } else if (index !== extremePointArr.length - 1) {
                 resultString += ', '
               }
@@ -344,8 +379,10 @@
           if (extremePointArr.length === 1) {
             resultString += '.'
           } else {
-            resultString +=
-              ', ainsi que tous les points sur le segment de droite entre eux.'
+            resultString += i18n({
+              en: ', as well as all the points on the line segment between them.',
+              fr: ', ainsi que tous les points sur le segment de droite entre eux.',
+            })
           }
         }
       }

@@ -27,11 +27,32 @@ html {
   text-align: center;
 }
 
+#menu a {
+  color: #ff5744;
+  display: inline-block;
+  margin: 0.5em;
+  transition: opacity 0.6s;
+  &:hover,
+  &:active {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+}
+
 button {
   background: #ffe066;
   color: black;
   border: 1px solid #333;
   transition: opacity 0.6s;
+
+  &:hover,
+  &:active {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .posint button {
@@ -45,17 +66,6 @@ button {
 
 #solve {
   font-weight: bold;
-}
-
-button {
-  &:hover,
-  &:active {
-    opacity: 0.5;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 h1 {
